@@ -1,0 +1,23 @@
+#! /usr/bin/env node
+const program = require('commander');
+const youdao = require('../index');
+
+program.allowUnknownOption()
+    .version('0.0.1')
+    .usage('youdao [input]');
+// program.command('query')
+//     .description('翻译输入')
+//     .action(function (word) {
+//         youdao(word);
+//     })
+program.command('*')
+    .description('翻译输入')
+    .action(function (word) {
+        youdao(word);
+    })
+
+if (!process.argv[2]) {
+    program.help();
+    console.log();
+}
+program.parse(process.argv);
